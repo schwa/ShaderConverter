@@ -6,19 +6,19 @@ This is a Dockerfile and a Justfile script to build a Docker image for the recom
 
 It currently includes [shaderc](https://github.com/google/shaderc/issues/1306) and [SPIRV-Cross](https://github.com/KhronosGroup/SPIRV-Cross).
 
-Shaderc itself includes a bunch of dependencies, including glslc (and glslang), which will allow you to convert GLSL (among other formats) shaders to SPIRV.
+Shaderc itself includes a bunch of dependencies, including `glslc` (and `glslang`), which will allow you to convert GLSL (among other formats) shaders to SPIR-V.
 
-SPIRV-Cross can convert SPIRV to Metal Shading Language (and other formats).
+SPIRV-Cross can convert SPIR-V to Metal Shading Language (and other formats).
 
-SPIRV is used as an intermediate format for conversion.
+SPIR-V is used as an intermediate format for conversion.
 
 ## How do I use it?
 
-You'll require docker, but on macOS I highly recommend [OrbStack](https://orbstack.dev) instead. You'll also need [Just](https://just.systems) to run the tasks within the provided [Justfile](Justfile) directly. But if you don't want to use Just you can just copy and paste the shell script commands contained within the Justfile itself.
+You'll require docker, but on macOS, I highly recommend [OrbStack](https://orbstack.dev) instead. You'll also need [Just](https://just.systems) to run the tasks within the provided [Justfile](Justfile) directly. But if you don't want to use Just, you can just copy and paste the shell script commands contained within the Justfile itself.
 
-If you're using this project to set up your own Dockerfile be aware that this needs a linux/amd64 docker container. See the 'build' rule of the Justfile for more information.
+If you're using this project to set up your own Dockerfile be aware that this needs a "linux/amd64" docker container. See the 'build' rule of the [Justfile](Justfile) for more information.
 
-If you have Just installed you can build everything with `just build`. Then take a look at the `example` rule in the [Justfile](Justfile) for examples showing how to convert GLSL shaders to Metal Shading Language (and change the entry point name).
+If you have [Just](https://just.systems) installed you can build everything with `just build`. Then take a look at the `example` rule in the [Justfile](Justfile) for examples showing how to convert GLSL shaders to Metal Shading Language (and change the entry point name).
 
 ## What binaries are included?
 
@@ -31,7 +31,7 @@ glslangValidator  spirv-as  spirv-cross  spirv-lesspipe.sh  spirv-lint  spirv-op
 
 ## Doesn't Apple's Metal Shader Converter do this?
 
-I don't think so. [Apple's tool](https://developer.apple.com/metal/shader-converter/) converts from shaders in LLVM/IR format to MSL. Currently only (Windows) DirectX DXIL format shaders seem supported.
+I don't think so. [Apple's tool](https://developer.apple.com/metal/shader-converter/) converts from shaders in LLVM/IR format to MSL. Currently, only (Windows) DirectX DXIL format shaders seem supported.
 
 ### Why are you doing this?
 
